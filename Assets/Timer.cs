@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine.Events;
 public class Timer : MonoBehaviour
 {
-    //public TextMeshProGUI timerText;
+    public TextMeshProUGUI timerText;
     public TMP_Text text;
     public float timer = 5;
     public AudioSource audiosource;
@@ -11,11 +11,13 @@ public class Timer : MonoBehaviour
     public UnityEvent OnTimerElapse;
     private bool isElapsed = false;
 
+
+
     // Update is called once per frame
     void Update()
     {
         timer -= Time.deltaTime;
-        if (timer <= 0)
+        if (timer <= 5)
         {
             OnTimerElapse.Invoke();
         }

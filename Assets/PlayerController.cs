@@ -22,5 +22,6 @@ public class PlayerController : MonoBehaviour
         {
             newPosition.x += .01f;
         }
+        transform.position = newPosition;
     }
 }
