@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Instance = this;
+        player = FindFirstObjectByType<PlayerController>();
     }
 
     // Update is called once per frame
