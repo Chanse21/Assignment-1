@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
     public int Speed = 5;
+    public float jumpForce;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,6 +24,10 @@ public class PlayerController : MonoBehaviour
         {
             newPosition.x += .01f;
         }
+        if (Input.GetKey(KeyCode.UpArrow))
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            }
         transform.position = newPosition;
     }
 
