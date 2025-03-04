@@ -4,7 +4,10 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
     public int Speed = 5;
+    private int direction;
     public float jumpForce;
+    public ProjectileBehavior ProjectilePrefab;
+    public Transform ShootingPoint;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,18 +19,33 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 newPosition = transform.position;
 
-        if (Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
+            direction = 1;
             newPosition.x -= .01f;
         }
-        if  (Input.GetKey("d") || Input.GetKey(KeyCode.RightArrow))
+        if  (Input.GetKey(KeyCode.RightArrow))
         {
+            direction = 0;
             newPosition.x += .01f;
         }
         if (Input.GetKey(KeyCode.UpArrow))
             {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
+
+        if(Input.GetKeyDown("g"))
+        {
+            var bullet = Instantiate(ProjectilePrefab, ShootingPoint.position, transform.rotation);
+            if(direction == 0)
+            {
+                bullet.Speed = bullet.Speed;
+            }
+            if (direction == 1)
+            {
+                bullet.Speed = -bullet.Speed;
+            }
+        }
         transform.position = newPosition;
     }
 

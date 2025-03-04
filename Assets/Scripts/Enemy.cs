@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemeyScript : MonoBehaviour
 {
     public float speed;
-    
+
 
     private float distance;
     // Start is called before the first frame update
@@ -17,11 +17,20 @@ public class EnemeyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        distance = Vector2.Distance(transform.position,GameManager.Instance.player.transform.position);
+        distance = Vector2.Distance(transform.position, GameManager.Instance.player.transform.position);
         Vector2 direction = GameManager.Instance.player.transform.position - transform.position;
 
 
-        transform.position = Vector2.MoveTowards(this.transform.position,GameManager.Instance.player.transform.position, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(this.transform.position, GameManager.Instance.player.transform.position, speed * Time.deltaTime);
     }
 
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Bullet"))
+        {
+            Destroy(gameObject);
+        }
+
+    }
 }

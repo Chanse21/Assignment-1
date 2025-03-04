@@ -6,7 +6,7 @@ public class Spawner : MonoBehaviour
     public Transform [] spawnLocation;
     public void SpawnEnemy()
     {
-        Vector2 spawnLocation = new Vector2(Random.Range(-1f, 3f), Random.Range(-1f, 3f));
+        Vector2 spawnLocation = new Vector2(Random.Range(-1f, 5f), Random.Range(-1f, 5f));
         Instantiate(EnemyPrefab, spawnLocation, Quaternion.identity);
     }
 }
