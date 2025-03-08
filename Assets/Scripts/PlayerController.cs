@@ -3,12 +3,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
-    public int Speed = 5;
+    public int speed = 5;
     private int direction;
     public float jumpForce;
     public ProjectileBehavior ProjectilePrefab;
     public Transform ShootingPoint;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Start is called once before the first execution of Update after the MonoBehavior is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -18,16 +18,20 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Vector3 newPosition = transform.position;
+        Vector3 newScale = transform.localScale;
+        float currentScale = Mathf.Abs(transform.localScale.x);
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             direction = 1;
             newPosition.x -= .01f;
+            newScale.x = -currentScale;
         }
         if  (Input.GetKey(KeyCode.RightArrow))
         {
             direction = 0;
             newPosition.x += .01f;
+            newScale.x = currentScale;
         }
         if (Input.GetKey(KeyCode.UpArrow))
             {
@@ -47,6 +51,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         transform.position = newPosition;
+        transform.localScale = newScale;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
