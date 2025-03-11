@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemeyScript : MonoBehaviour
 {
     public float speed;
+    public GameManager gm;
 
     private float distance;
     // Start is called before the first frame update
@@ -29,6 +30,7 @@ public class EnemeyScript : MonoBehaviour
         if (collision.gameObject.tag.Equals("Bullet"))
         {
             Destroy(gameObject);
+            gm.score++;
         }
 
     }

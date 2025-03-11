@@ -3,7 +3,6 @@ using UnityEngine;
 public class ProjectileBehavior : MonoBehaviour
 {
     public float Speed = 8.5f;
-    public GameManager gm;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,7 +19,6 @@ public class ProjectileBehavior : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Enemy"))
         {
-            gm.score++;
             Destroy(gameObject);
         }
     }
