@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -35,7 +36,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.UpArrow))
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             }
 
         if(Input.GetKeyDown("g"))
@@ -53,20 +54,12 @@ public class PlayerController : MonoBehaviour
         transform.position = newPosition;
         transform.localScale = newScale;
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag.Equals("coin"))
-        {
-            Destroy(collision.gameObject);
-        }
-    }
-
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag.Equals("Enemy"))
         {
             Destroy(gameObject);
+            SceneManager.LoadScene("End Scene");
         }
     }
 }
