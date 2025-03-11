@@ -3363,6 +3363,7 @@ MonoBehaviour:
   jumpForce: 3
   ProjectilePrefab: {fileID: 1614443191726212470, guid: 4bfea8c7cd1d3fe40a1bf5059fed816d, type: 3}
   ShootingPoint: {fileID: 441109116}
+  gm: {fileID: 988859633}
 --- !u!212 &1891804155
 SpriteRenderer:
   m_ObjectHideFlags: 0
